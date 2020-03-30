@@ -58,7 +58,9 @@ elif env['platform'] in ('x11', 'linux'):
     cpp_library += '.linux'
     env.Append(CCFLAGS = ['-fPIC','-g','-O3'])
     env.Append(CXXFLAGS = ['-std=c++17']) 
-
+    env.Append(LINKFLAGS=[
+        '-Wl,-rpath,\'$$ORIGIN\''
+    ])
     env['vcpkg_path'] += '/x64-linux/'
     zipper_lib_path += 'build/'
 
